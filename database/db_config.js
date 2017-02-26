@@ -5,7 +5,7 @@ const Sequelize = require('sequelize')
 
 
 //Pass in the url to the place where you are hosting your database
-const db = new Sequelize('')
+const db = new Sequelize('postgres://mlajprmi:OetbxJ7I_gH8HHCBTbBvaTQF28P-GAjh@babar.elephantsql.com:5432/mlajprmi')
 
 
 
@@ -27,30 +27,34 @@ TASK:
 
 Below, make a new table below called 'Users'.
 Add 3 different collumns to the table: Name, Age, and Birthday
-Remember: an id is automoatically generated when inserting a 
+Remember: an id is automatically generated when inserting a 
 row. Don't forget to sync your table below and add it to module.exports
 ****************/
 
-
-
-
-
-
-
-
-
+const Users = db.define('users', {
+	name: {
+		type: Sequelize.STRING(30)
+	},
+	age: {
+		type: Sequelize.INTEGER()
+	},
+	birthday: {
+		type: Sequelize.DATEONLY()
+	}
+})
 
 //This code is necesarry for creating your table in the DB
 //It syncs the particular table to the table. You should 
 //do this  
 Cookies.sync()
+Users.sync()
 
 //In the code below, we pass in { force: true }. Here, sync drops 
 //all data from that particular table and starts it fresh
 //You need to drop the table in order to make changes
 //to the schema
 
-//Cookies.sync({ force: true })
+// Cookies.sync({ force: true })
 
 
 //This code connects your application to the database
@@ -65,4 +69,7 @@ db.authenticate()
     });
 
 //Pass in your user table in module.exports
-module.exports = { Cookies: Cookies };
+module.exports = { 
+	Cookies: Cookies,
+	Users: Users
+ };

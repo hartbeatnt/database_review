@@ -3,7 +3,7 @@
 
 ###Install and run the project:
 
-1. Fork a copy of the project and clone it down to your computer 
+1. Fork a copy of the project and clone it down to your computer -- https://github.com/hartbeatnt/database_review
 2. Run `npm install`
 3. Run `npm start` to start the server
 4. Start up or download postman: https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop?hl=en
